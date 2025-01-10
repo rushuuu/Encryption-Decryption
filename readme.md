@@ -74,6 +74,8 @@ tests/
   userModule.test.js
 utils/
   encryption.js
+  rsaMethod.js
+  pgpMethod.js
 ```
 
 ### **File Descriptions**
@@ -166,11 +168,6 @@ npm run test
 - **jest**: Testing framework.
 - **nodemon**: Utility for automatically restarting the server during development.
 - **supertest**: HTTP assertions for testing.
-
-
-## **License**
-This project is licensed under the ISC License.
-
 
 ## **Acknowledgements**
 Code completion, minor bug fixes, and comments documentation were assisted by GitHub Copilot.
