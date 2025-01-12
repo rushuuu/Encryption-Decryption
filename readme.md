@@ -19,7 +19,7 @@ This microservice provides user management functionality, including adding, retr
 ### **2. Clone Repository**
 ```bash
 git clone https://github.com/rushuuu/Encryption-Decryption
-cd NODEJS-OS
+cd Encryption-Decryption-Master
 ```
 
 ### **3. Configure Environment**
