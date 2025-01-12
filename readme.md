@@ -51,7 +51,7 @@ npx infisical login
 
 ### **7. Run the Application**
 ```bash
-npm run dev
+infisical run npm run dev
 ```
 
 ### **8. Access the API**
