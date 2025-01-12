@@ -1,20 +1,21 @@
-# **Encrytion/Decryption Microservice**
+# **Encryption/Decryption Microservice**
 
 This microservice provides user management functionality, including adding, retrieving, filtering, and deleting users. It follows clean coding principles, modular design, and best practices for Node.js and Sequelize with MySQL.
 
-
+---
 
 ## **Features**
 - **Add User:** Create a new user with name, email, and role (Admin, Editor, Viewer).
 - **Fetch All Users:** Retrieve all users, with optional role-based filtering.
 - **Delete User:** Remove a user by their unique ID.
 
+---
 
 ## **Setup and Run**
 
 ### **1. Prerequisites**
 - Node.js (v16 or later)
-- Docker
+- MySQL
 
 ### **2. Clone Repository**
 ```bash
@@ -25,21 +26,35 @@ cd Encryption-Decryption-Master
 ### **3. Configure Environment**
 Create a `.env` file in the root directory:
 ```env
-DB_HOST=db
+DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=<your-password>
-DB_NAME=user_management
+DB_NAME=demo
 DB_PORT=3306
 PORT=3000
 ```
 
-### **4. Start the Application**
-Using Docker:
+### **4. Install Dependencies**
 ```bash
-docker-compose up --build
+npm install
 ```
 
-### **5. Access the API**
+### **5. Install Infisical**
+```bash
+npm install infisical
+```
+
+### **6. Login to Infisical**
+```bash
+npx infisical login
+```
+
+### **7. Run the Application**
+```bash
+npm run dev
+```
+
+### **8. Access the API**
 - Base URL: `http://localhost:3000`
 - Example Endpoints:
   - `POST /api/users` - Add a user
@@ -47,6 +62,7 @@ docker-compose up --build
   - `GET /api/users?role=Admin` - Fetch users with a particular role
   - `DELETE /api/users?id=<userId>` - Delete a user
 
+---
 
 ## **Project Structure**
 
@@ -89,10 +105,14 @@ utils/
 - **routes/userRoutes.js**: Defines the routes for user-related operations.
 - **services/userService.js**: Contains business logic for user operations.
 - **tests/userModule.test.js**: Test suite for the User Management API using Jest and Supertest.
-- **utils/encryption.js**: Utility functions for encrypting and decrypting user data.
+- **utils/encryption.js**: Utility functions for encrypting and decrypting data.
+- **utils/rsaMethod.js**: Functions for generating RSA key pairs and encrypting/decrypting data using RSA.
+- **utils/pgpMethod.js**: Functions for encrypting and decrypting data using PGP.
 - **.gitignore**: Specifies files and directories to be ignored by Git.
 - **package.json**: Contains metadata about the project and its dependencies.
 - **readme.md**: Documentation for the project.
+
+---
 
 ## **Working Mechanism**
 
@@ -110,7 +130,7 @@ utils/
 - The client sends a `DELETE` request to `/api/users?id=<userId>`.
 - The `userController` calls `userService` to delete the user by ID.
 
-
+---
 
 ## **Data Encryption and Decryption**
 
@@ -123,6 +143,8 @@ utils/
 
 ### **Encryption Utility**
 - The `utils/encryption.js` file contains functions for encrypting and decrypting data using the RSA algorithm.
+
+---
 
 ## **Comparison: RSA vs PGP**
 
@@ -143,10 +165,12 @@ Run test cases with Jest:
 npm run test
 ```
 
+---
 
 ## **Security**
 - **Encryption**: User data (name, email, role) is encrypted before being stored in the database and decrypted when retrieved. Encryption is handled using RSA keys stored in `public_key.pem` and `private_key.pem`.
 
+---
 
 ## **Environment Variables**
 - **DB_HOST**: Database host.
@@ -156,6 +180,7 @@ npm run test
 - **DB_PORT**: Database port.
 - **PORT**: Application port.
 
+---
 
 ## **Dependencies**
 - **body-parser**: Middleware for parsing request bodies.
@@ -168,6 +193,13 @@ npm run test
 - **jest**: Testing framework.
 - **nodemon**: Utility for automatically restarting the server during development.
 - **supertest**: HTTP assertions for testing.
+
+---
+
+## **License**
+This project is licensed under the ISC License.
+
+---
 
 ## **Acknowledgements**
 Code completion, minor bug fixes, and comments documentation were assisted by GitHub Copilot.
